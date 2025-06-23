@@ -8,6 +8,6 @@ spec:
     spec:
       containers:
         - name: dk-training-job
-          image: europe-west4-docker.pkg.dev/actin-build/build-registry-docker/denis-kumar-gcp-training:0.0.1
+          image: europe-west4-docker.pkg.dev/actin-build/build-registry-docker/denis-kumar-gcp-training:0.0.1          
           imagePullPolicy: Always
       restartPolicy: OnFailure

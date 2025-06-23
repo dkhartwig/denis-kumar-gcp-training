@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pubsub-publisher-job-dk
+spec:
+  template:
+    metadata:
+      labels:
+        app: pubsub-publisher
+    spec:
+      serviceAccountName: pubsub-workload-sa
+      containers:
+        - name: pubsub-publisher-job-dk
+          image: europe-west4-docker.pkg.dev/actin-build/build-registry-docker/denis-kumar-gcp-training-pub:0.0.1
+          imagePullPolicy: Always
+      restartPolicy: OnFailure

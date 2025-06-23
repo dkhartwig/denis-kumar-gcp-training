@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pubsub-workload-sa
+  namespace: default
+  annotations:
+    iam.gke.io/gcp-service-account: pubsub-workload-sa@actin-training.iam.gserviceaccount.com
