@@ -1,0 +1,42 @@
+name: "dk-training-minimwe"
+version: "0.0.1"
+storagePath: "gs://gcp-training-denis"
+stages:
+  - name: yajt
+    image: "busybox"
+    version: "1.36"
+    command: "sh"
+    arguments: " -c echo 'hello' > qwe.txt"
+    options:
+      node:
+        spot: true
+      resources:
+        requests:
+          cpu: "1"
+          memory: "1G"
+  - name: another
+    image: "busybox"
+    version: "1.36"
+    command: "sh"
+    arguments: " -c cat /in/qwe.txt && sleep 120 && echo 'done'"
+    options:
+      node:
+        spot: true
+      resources:
+        requests:
+          cpu: "1"
+          memory: "1G"
+    inputStages:
+      - yajt
+  - name: final
+    image: "europe-west4-docker.pkg.dev/actin-build/build-registry-docker/denis-kumar-gcp-training-pub"
+    version: "0.0.1"
+    options:
+      node:
+        spot: true
+      resources:
+        requests:
+          cpu: "1"
+          memory: "1G"
+    inputStages:
+      - another

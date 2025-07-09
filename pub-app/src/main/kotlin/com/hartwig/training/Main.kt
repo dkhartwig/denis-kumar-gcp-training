@@ -5,12 +5,17 @@ import com.google.cloud.pubsub.v1.Publisher
 import com.google.protobuf.ByteString
 import com.google.pubsub.v1.PubsubMessage
 import com.google.pubsub.v1.TopicName
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.Path
 import java.util.concurrent.TimeUnit
 
 fun main() {
-    val projectId = "actin-training"
-    val topicId = "gcp-training-denis"
-    publisherExample(projectId, topicId)
+    val file = File("/in/qwe.txt").exists()
+    println("File exists: $file")
+//    val projectId = "actin-training"
+//    val topicId = "gcp-training-denis"
+//    publisherExample(projectId, topicId)
 }
 
 fun publisherExample(projectId: String?, topicId: String?) {
